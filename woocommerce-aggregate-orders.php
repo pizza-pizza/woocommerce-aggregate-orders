@@ -117,7 +117,7 @@ if ( is_admin() && !class_exists( 'wcAggregateOrders' ) ) {
 
 			$merged = wc_create_order();
 			$orders = array();
-			$items = $ship = $bill = array();
+			$items = $fees = $ship = $bill = array();
 
 			foreach ( $post_ids as $post_id ) {
 				$order = wc_get_order( $post_id );
@@ -152,6 +152,7 @@ if ( is_admin() && !class_exists( 'wcAggregateOrders' ) ) {
 		        );
 
 				$items = array_merge($items,$order->get_items());
+				$fees = array_merge($fees,$order->get_fees());
 			}
 
 			$merged->set_address( $bill, 'billing' );
@@ -167,6 +168,17 @@ if ( is_admin() && !class_exists( 'wcAggregateOrders' ) ) {
 	        			'tax' => $item['line_tax']
 	        		)
 				) );
+	        }
+
+	        foreach ( $fees as $f ) {
+				$fee            = new stdClass();
+				$fee->name      = $f['name'];
+				$fee->tax_class = $f['tax_class'];
+				$fee->taxable   = $fee->tax_class !== '0';
+				$fee->amount    = $f['line_total'];
+				$fee->tax       = $f['line_tax'];
+				$fee->tax_data  = array();
+	        	$merged->add_fee( $fee );
 	        }
 
 	        $merged->add_order_note( 'Merged from orders #' . implode( ', #', $post_ids ) );
