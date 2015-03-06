@@ -42,7 +42,9 @@ if ( is_admin() && !class_exists( 'wcAggregateOrders' ) ) {
 		        'exclude_from_search'       => false,
 		        'show_in_admin_all_list'    => true,
 		        'show_in_admin_status_list' => true,
-		        'label_count'               => _n_noop( 'Invoiced <span class="count">(%s)</span>', 'Invoiced <span class="count">(%s)</span>' )
+		        'label_count'               => _n_noop( __( 'Invoiced', 'woocommerce-aggregate_orders' )
+		        	. ' <span class="count">(%s)</span>', __( 'Invoiced', 'woocommerce-aggregate_orders' )
+		        	. ' <span class="count">(%s)</span>' )
 		    ) );
 
 		}
@@ -88,7 +90,7 @@ if ( is_admin() && !class_exists( 'wcAggregateOrders' ) ) {
 					});
 
 					if(!($('input[value="aggregate"]').length && $('input[value="aggregate"]').parent().next().find('textarea').val() == 1)){
-						$('#woo_pdf_metabox .inside').html('Invoices cannot be generated for unmerged orders.');
+						$('#woo_pdf_metabox .inside').html('<?php _e( 'Invoices cannot be generated for unmerged orders.', 'woocommerce-aggregate_orders' ) ?>');
 					}
 				});
 				</script>
@@ -181,7 +183,7 @@ if ( is_admin() && !class_exists( 'wcAggregateOrders' ) ) {
 	        	$merged->add_fee( $fee );
 	        }
 
-	        $merged->add_order_note( 'Merged from orders #' . implode( ', #', $post_ids ) );
+	        $merged->add_order_note( __( 'Merged from orders #', 'woocommerce-aggregate_orders' ) . implode( ', #', $post_ids ) );
 	        $merged->calculate_totals();
 	        update_post_meta( $merged->id, 'aggregate', true );
 
@@ -225,7 +227,7 @@ if ( is_admin() && !class_exists( 'wcAggregateOrders' ) ) {
 		*/
 		public function add_invoices_link() {
 
-			add_submenu_page( 'woocommerce', 'Invoice Orders', 'Invoice Orders', 'manage_options', 'invoice-orders', array( $this, 'show_aggregate_orders' ) );
+			add_submenu_page( 'woocommerce', __( 'Invoice Orders', 'woocommerce-aggregate_orders' ), __( 'Invoice Orders', 'woocommerce-aggregate_orders' ), 'manage_options', 'invoice-orders', array( $this, 'show_aggregate_orders' ) );
 
 		}
 
@@ -251,7 +253,7 @@ if ( is_admin() && !class_exists( 'wcAggregateOrders' ) ) {
 			$orders->prepare_items();
 			?>
 			<div class="wrap">
-				<h2>Invoice Orders</h2>
+				<h2><?php _e( 'Invoice Orders', 'woocommerce-aggregate_orders' ); ?></h2>
 
 				<?php $orders->display(); ?>
 

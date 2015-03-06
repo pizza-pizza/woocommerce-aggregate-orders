@@ -1,0 +1,52 @@
+# Copyright (C) 2015 WooCommerce Aggregate Order Invoicing
+# This file is distributed under the same license as the WooCommerce Aggregate Order Invoicing package.
+msgid ""
+msgstr ""
+"Project-Id-Version: WooCommerce Aggregate Order Invoicing 1.0.0\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/woocommerce-"
+"aggregate-orders\n"
+"POT-Creation-Date: 2015-03-06 15:07:41+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2015-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: woocommerce-aggregate-orders.php:80
+msgid "Merge Orders for Invoicing"
+msgstr ""
+
+#: woocommerce-aggregate-orders.php:93
+msgid "Invoices cannot be generated for unmerged orders."
+msgstr ""
+
+#: woocommerce-aggregate-orders.php:186
+msgid "Merged from orders #"
+msgstr ""
+
+#: woocommerce-aggregate-orders.php:230 woocommerce-aggregate-orders.php:256
+msgid "Invoice Orders"
+msgstr ""
+
+#: woocommerce-aggregate-orders.php:283
+msgid "You must select at least two reports to merge."
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "WooCommerce Aggregate Order Invoicing"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Generate single invoices for groups of orders. Creates a new 'invoiced' "
+"order type."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "New Order Studios"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://neworderstudios.com"
+msgstr ""
