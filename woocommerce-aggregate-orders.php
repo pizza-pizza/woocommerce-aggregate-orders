@@ -124,31 +124,31 @@ if ( is_admin() && !class_exists( 'wcAggregateOrders' ) ) {
 				update_post_meta( $order->id, 'merged', true );
 
 				$ship = @$ship['address_1'] ? $ship : array(
-		            'first_name' => $order->shipping_first_name,
-		            'last_name'  => $order->shipping_last_name,
-		            'company'    => $order->shipping_company,
-		            'email'      => $order->shipping_email,
-		            'phone'      => $order->shipping_phone,
-		            'address_1'  => $order->shipping_address_1,
-		            'address_2'  => $order->shipping_address_2,
-		            'city'       => $order->shipping_city,
-		            'state'      => $order->shipping_state,
-		            'postcode'   => $order->shipping_postcode,
-		            'country'    => $order->shipping_country
+					'first_name' => $order->shipping_first_name,
+					'last_name'  => $order->shipping_last_name,
+					'company'    => $order->shipping_company,
+					'email'      => $order->shipping_email,
+					'phone'      => $order->shipping_phone,
+					'address_1'  => $order->shipping_address_1,
+					'address_2'  => $order->shipping_address_2,
+					'city'       => $order->shipping_city,
+					'state'      => $order->shipping_state,
+					'postcode'   => $order->shipping_postcode,
+					'country'    => $order->shipping_country
 		        );
 
 				$bill = @$bill['address_1'] ? $bill : array(
-		            'first_name' => $order->billing_first_name,
-		            'last_name'  => $order->billing_last_name,
-		            'company'    => $order->billing_company,
-		            'email'      => $order->billing_email,
-		            'phone'      => $order->billing_phone,
-		            'address_1'  => $order->billing_address_1,
-		            'address_2'  => $order->billing_address_2,
-		            'city'       => $order->billing_city,
-		            'state'      => $order->billing_state,
-		            'postcode'   => $order->billing_postcode,
-		            'country'    => $order->billing_country
+					'first_name' => $order->billing_first_name,
+					'last_name'  => $order->billing_last_name,
+					'company'    => $order->billing_company,
+					'email'      => $order->billing_email,
+					'phone'      => $order->billing_phone,
+					'address_1'  => $order->billing_address_1,
+					'address_2'  => $order->billing_address_2,
+					'city'       => $order->billing_city,
+					'state'      => $order->billing_state,
+					'postcode'   => $order->billing_postcode,
+					'country'    => $order->billing_country
 		        );
 
 				$items = array_merge($items,$order->get_items());
@@ -230,7 +230,7 @@ if ( is_admin() && !class_exists( 'wcAggregateOrders' ) ) {
 		}
 
 		/**
-		* Let's build our aggregate orders page by convinving WP to render a normal order list containing the aggregates
+		* Let's build our aggregate orders page by convincing WP to render a normal order list containing the aggregates
 		*/
 		public function show_aggregate_orders() {
 
