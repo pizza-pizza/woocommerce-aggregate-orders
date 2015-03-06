@@ -280,7 +280,7 @@ if ( is_admin() && !class_exists( 'wcAggregateOrders' ) ) {
 
 		    ?>
 		    <div class="warning">
-		        <p><?php _e( 'You must select at least two reports to merge.', 'woocommerce-aggregate_orders' ); ?></p>
+		        <p><?php _e( 'You must select at least two orders to merge.', 'woocommerce-aggregate_orders' ); ?></p>
 		    </div>
 		    <?php
 

@@ -15,33 +15,33 @@ msgstr ""
 
 #: woocommerce-aggregate-orders.php:80
 msgid "Merge Orders for Invoicing"
-msgstr ""
+msgstr "Bestellungen zu Rechnung zusammenführen"
 
 #: woocommerce-aggregate-orders.php:93
 msgid "Invoices cannot be generated for unmerged orders."
-msgstr ""
+msgstr "Rechnungen können nur für zusammengeführte Bestellungen erstellt werden"
 
 #: woocommerce-aggregate-orders.php:186
 msgid "Merged from orders #"
-msgstr ""
+msgstr "Zusammengeführt von Bestellungen #"
 
 #: woocommerce-aggregate-orders.php:230 woocommerce-aggregate-orders.php:256
 msgid "Invoice Orders"
-msgstr ""
+msgstr "Rechnung erstellen"
 
 #: woocommerce-aggregate-orders.php:283
 msgid "You must select at least two orders to merge."
-msgstr ""
+msgstr "Es müssen mindestens zwei Bestellungen zur Zusammenführung selektiert sein"
 
 #. Plugin Name of the plugin/theme
 msgid "WooCommerce Aggregate Order Invoicing"
-msgstr ""
+msgstr "WooCommerce Sammelrechnungen"
 
 #. Description of the plugin/theme
 msgid ""
-"Generate single invoices for groups of orders. Creates a new 'invoiced' "
+"Generate single invoices for groups of orders. Creates a new 'invoiced'."
 "order type."
-msgstr ""
+msgstr "Erstelle Sammelrechnungen aus mehreren Bestellungen. Fügt 'In Rechnug gestellt' hinzu."
 
 #. Author of the plugin/theme
 msgid "New Order Studios"
