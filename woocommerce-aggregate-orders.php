@@ -18,7 +18,7 @@ if ( is_admin() && !class_exists( 'wcAggregateOrders' ) ) {
 
 		public function __construct() {
 
-			load_plugin_textdomain( 'woocommerce-aggregate_orders', false, basename( dirname(__FILE__) ) . '/i18n' );
+			load_plugin_textdomain( 'woocommerce-aggregate-orders', false, basename( dirname(__FILE__) ) . '/i18n' );
 			add_action( 'admin_footer', array( $this, 'add_merge_options' ) );
 			add_action( 'load-edit.php', array( $this, 'merge_orders' ) );
 			add_action( 'init', array( $this, 'register_invoice_order_statuses' ) );
@@ -42,8 +42,8 @@ if ( is_admin() && !class_exists( 'wcAggregateOrders' ) ) {
 		        'exclude_from_search'       => false,
 		        'show_in_admin_all_list'    => true,
 		        'show_in_admin_status_list' => true,
-		        'label_count'               => _n_noop( __( 'Invoiced', 'woocommerce-aggregate_orders' )
-		        	. ' <span class="count">(%s)</span>', __( 'Invoiced', 'woocommerce-aggregate_orders' )
+		        'label_count'               => _n_noop( __( 'Invoiced', 'woocommerce-aggregate-orders' )
+		        	. ' <span class="count">(%s)</span>', __( 'Invoiced', 'woocommerce-aggregate-orders' )
 		        	. ' <span class="count">(%s)</span>' )
 		    ) );
 
@@ -77,7 +77,7 @@ if ( is_admin() && !class_exists( 'wcAggregateOrders' ) ) {
 				?>
 				<script type="text/javascript">
 				jQuery('document').ready(function($){
-					$('<option>').val('merge_orders').text('<?php _e( 'Merge Orders for Invoicing', 'woocommerce-aggregate_orders' ) ?>').appendTo("select[name='action'],select[name='action2']");
+					$('<option>').val('merge_orders').text('<?php _e( 'Merge Orders for Invoicing', 'woocommerce-aggregate-orders' ) ?>').appendTo("select[name='action'],select[name='action2']");
 
 					// While we're in here, let's give some color to our merged orders
 					$('.merged-order').each(function(){
@@ -90,7 +90,7 @@ if ( is_admin() && !class_exists( 'wcAggregateOrders' ) ) {
 					});
 
 					if(!($('input[value="aggregate"]').length && $('input[value="aggregate"]').parent().next().find('textarea').val() == 1)){
-						$('#woo_pdf_metabox .inside').html('<?php _e( 'Invoices cannot be generated for unmerged orders.', 'woocommerce-aggregate_orders' ) ?>');
+						$('#woo_pdf_metabox .inside').html('<?php _e( 'Invoices cannot be generated for unmerged orders.', 'woocommerce-aggregate-orders' ) ?>');
 					}
 				});
 				</script>
@@ -183,7 +183,7 @@ if ( is_admin() && !class_exists( 'wcAggregateOrders' ) ) {
 	        	$merged->add_fee( $fee );
 	        }
 
-	        $merged->add_order_note( __( 'Merged from orders #', 'woocommerce-aggregate_orders' ) . implode( ', #', $post_ids ) );
+	        $merged->add_order_note( __( 'Merged from orders #', 'woocommerce-aggregate-orders' ) . implode( ', #', $post_ids ) );
 	        $merged->calculate_totals();
 	        update_post_meta( $merged->id, 'aggregate', true );
 
@@ -227,7 +227,7 @@ if ( is_admin() && !class_exists( 'wcAggregateOrders' ) ) {
 		*/
 		public function add_invoices_link() {
 
-			add_submenu_page( 'woocommerce', __( 'Invoice Orders', 'woocommerce-aggregate_orders' ), __( 'Invoice Orders', 'woocommerce-aggregate_orders' ), 'manage_options', 'invoice-orders', array( $this, 'show_aggregate_orders' ) );
+			add_submenu_page( 'woocommerce', __( 'Invoice Orders', 'woocommerce-aggregate-orders' ), __( 'Invoice Orders', 'woocommerce-aggregate-orders' ), 'manage_options', 'invoice-orders', array( $this, 'show_aggregate_orders' ) );
 
 		}
 
@@ -253,7 +253,7 @@ if ( is_admin() && !class_exists( 'wcAggregateOrders' ) ) {
 			$orders->prepare_items();
 			?>
 			<div class="wrap">
-				<h2><?php _e( 'Invoice Orders', 'woocommerce-aggregate_orders' ); ?></h2>
+				<h2><?php _e( 'Invoice Orders', 'woocommerce-aggregate-orders' ); ?></h2>
 
 				<?php $orders->display(); ?>
 
@@ -280,7 +280,7 @@ if ( is_admin() && !class_exists( 'wcAggregateOrders' ) ) {
 
 		    ?>
 		    <div class="warning">
-		        <p><?php _e( 'You must select at least two orders to merge.', 'woocommerce-aggregate_orders' ); ?></p>
+		        <p><?php _e( 'You must select at least two orders to merge.', 'woocommerce-aggregate-orders' ); ?></p>
 		    </div>
 		    <?php
 
