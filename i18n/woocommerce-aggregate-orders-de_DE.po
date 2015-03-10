@@ -33,6 +33,10 @@ msgstr "Rechnung erstellen"
 msgid "You must select at least two orders to merge."
 msgstr "Es müssen mindestens zwei Bestellungen zur Zusammenführung selektiert sein"
 
+#: woocommerce-aggregate-orders.php
+msgid "Invoiced"
+msgstr "Rechnung gestellt"
+
 #. Plugin Name of the plugin/theme
 msgid "WooCommerce Aggregate Order Invoicing"
 msgstr "WooCommerce Sammelrechnungen"

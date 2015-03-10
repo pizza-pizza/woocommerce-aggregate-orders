@@ -37,7 +37,7 @@ if ( is_admin() && !class_exists( 'wcAggregateOrders' ) ) {
 		public function register_invoice_order_statuses() {
 
 		    register_post_status( 'wc-invoiced', array(
-		        'label'                     => 'Invoiced',
+		        'label'                     => __( 'Invoiced', 'woocommerce-aggregate-orders' ),
 		        'public'                    => false,
 		        'exclude_from_search'       => false,
 		        'show_in_admin_all_list'    => true,

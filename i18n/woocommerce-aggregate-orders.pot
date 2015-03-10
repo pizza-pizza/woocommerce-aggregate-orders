@@ -33,6 +33,10 @@ msgstr ""
 msgid "You must select at least two orders to merge."
 msgstr ""
 
+#: woocommerce-aggregate-orders.php
+msgid "Invoiced"
+msgstr ""
+
 #. Plugin Name of the plugin/theme
 msgid "WooCommerce Aggregate Order Invoicing"
 msgstr ""
