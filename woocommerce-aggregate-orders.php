@@ -186,6 +186,7 @@ if ( is_admin() && !class_exists( 'wcAggregateOrders' ) ) {
 	        $merged->add_order_note( __( 'Merged from orders #', 'woocommerce-aggregate-orders' ) . implode( ', #', $post_ids ) );
 	        $merged->calculate_totals();
 	        update_post_meta( $merged->id, 'aggregate', true );
+	        update_post_meta( $merged->id, '_customer_user', $order->get_user_id() );
 
 		}
 
