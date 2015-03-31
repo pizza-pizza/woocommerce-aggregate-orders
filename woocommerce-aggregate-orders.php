@@ -167,8 +167,8 @@ if ( is_admin() && !class_exists( 'wcAggregateOrders' ) ) {
 				wc_add_order_item_meta( $item_id, '_qty',			1 );
 				wc_add_order_item_meta( $item_id, '_variation_id',	0 );
 				wc_add_order_item_meta( $item_id, '_tax_class',		0 );
-				wc_add_order_item_meta( $item_id, '_line_subtotal',	$order->get_subtotal() );
-				wc_add_order_item_meta( $item_id, '_line_total',	$order->get_subtotal() );
+				wc_add_order_item_meta( $item_id, '_line_subtotal',	$order->get_total() );
+				wc_add_order_item_meta( $item_id, '_line_total',	$order->get_total() );
 				wc_add_order_item_meta( $item_id, '_line_tax',		0 );
 
 			}
