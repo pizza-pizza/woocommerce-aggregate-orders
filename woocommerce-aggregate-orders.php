@@ -2,7 +2,7 @@
 /*----------------------------------------------------------------------------------------------------------------------
 Plugin Name: WooCommerce Aggregate Order Invoicing
 Description: Generate single invoices for groups of orders. Creates a new 'invoiced' order type.
-Version: 1.5.0
+Version: 1.6.0
 Author: New Order Studios
 Author URI: http://neworderstudios.com
 ----------------------------------------------------------------------------------------------------------------------*/
@@ -118,8 +118,8 @@ if ( is_admin() && !class_exists( 'wcAggregateOrders' ) ) {
 			}
 
 			$merged = wc_create_order();
-			$orders = array();
 			$taxes = $ship = $bill = array();
+			$shipping_tax = 0;
 
 			foreach ( $post_ids as $post_id ) {
 				$order = wc_get_order( $post_id );
@@ -158,6 +158,9 @@ if ( is_admin() && !class_exists( 'wcAggregateOrders' ) ) {
 					$taxes[$tax['rate_id']] = @$taxes[$tax['rate_id']] ? $taxes[$tax['rate_id']] + $tax['tax_amount'] : $tax['tax_amount'];
 				}
 
+				// We'd like to aggregate shipping tax applied to each order.
+				$shipping_tax += $order->get_shipping_tax();
+
 				// Let's make WC think that we're adding product line items.
 				$item_id = wc_add_order_item( $merged->id, array(
 					'order_item_name' => substr( $order->order_date, 0, 10 ) . ': #' . $post_id,
@@ -171,20 +174,22 @@ if ( is_admin() && !class_exists( 'wcAggregateOrders' ) ) {
 				wc_add_order_item_meta( $item_id, '_line_subtotal',	$order->get_total() );
 				wc_add_order_item_meta( $item_id, '_line_total',	$order->get_total() );
 				wc_add_order_item_meta( $item_id, '_line_tax',		0 );
-
 			}
 
 			$merged->set_address( $bill, 'billing' );
 	        $merged->set_address( $ship, 'shipping' );
 
-	        foreach ( $taxes as $rate_id => $amount ) $merged->add_tax( $rate_id, $amount );
+	        foreach ( $taxes as $rate_id => $amount ) {
+	        	$merged->add_tax( $rate_id, $amount, $shipping_tax );
+	        	$shipping_tax = 0;
+	        }
 
 	        /*
 	        TODO: let's add a note describing the date range of which this aggregate is comprised.
 	        $merged->add_order_note( __( 'Merged from orders #', 'woocommerce-aggregate-orders' ) . implode( ', #', $post_ids ) );
 	        */
 
-	        // Crucially, we are not interested in calculating tax rates here-- we've already done this manually.
+	        // Crucially, we are not interested in adding tax rates here-- we've already done this manually.
 	        $merged->calculate_totals( false );
 	        
 	        update_post_meta( $merged->id, 'aggregate', true );
