@@ -229,7 +229,7 @@ if ( is_admin() && !class_exists( 'wcAggregateOrders' ) ) {
 		*/
 		public function add_invoices_link() {
 
-			add_submenu_page( 'woocommerce', __( 'Invoice Orders', 'woocommerce-aggregate-orders' ), __( 'Invoice Orders', 'woocommerce-aggregate-orders' ), 'manage_options', 'invoice-orders', array( $this, 'show_aggregate_orders' ) );
+			add_submenu_page( 'woocommerce', __( 'Invoice Orders', 'woocommerce-aggregate-orders' ), __( 'Invoice Orders', 'woocommerce-aggregate-orders' ), 'edit_posts', 'invoice-orders', array( $this, 'show_aggregate_orders' ) );
 
 		}
 
