@@ -72,8 +72,10 @@ if ( is_admin() && !class_exists( 'wcAggregateOrders' ) ) {
 		public function add_merge_options() {
 
 			global $post_type;
+			global $post;
 
 			if ( $post_type == 'shop_order' && @$_REQUEST['page'] != 'invoice-orders' ) {
+				$aggregate = get_post_meta( $post->ID, 'aggregate', true );
 				?>
 				<script type="text/javascript">
 				jQuery('document').ready(function($){
@@ -89,9 +91,9 @@ if ( is_admin() && !class_exists( 'wcAggregateOrders' ) ) {
 						$(this).parent().hide();
 					});
 
-					if(!($('input[value="aggregate"]').length && $('input[value="aggregate"]').parent().next().find('textarea').val() == 1)){
+					<?php if ( !$aggregate ) { ?>
 						$('#woo_pdf_metabox .inside').html('<?php _e( 'Invoices cannot be generated for unmerged orders.', 'woocommerce-aggregate-orders' ) ?>');
-					}
+					<?php } ?>
 				});
 				</script>
 				<?php
