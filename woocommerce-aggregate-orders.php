@@ -21,48 +21,10 @@ if ( is_admin() && !class_exists( 'wcAggregateOrders' ) ) {
 			load_plugin_textdomain( 'woocommerce-aggregate-orders', false, basename( dirname(__FILE__) ) . '/i18n' );
 			add_action( 'admin_footer', array( $this, 'add_merge_options' ) );
 			add_action( 'load-edit.php', array( $this, 'merge_orders' ) );
-			add_action( 'init', array( $this, 'register_invoice_order_statuses' ) );
 			add_action( 'parse_query', array( $this, 'filter_orders' ) );
 			add_action( 'admin_menu', array( $this, 'add_invoices_link' ) );
 			add_action( 'manage_shop_order_posts_custom_column', array( $this, 'designate_merged_orders' ), 20 );
-
-			add_filter( 'wc_order_statuses', array( $this, 'add_invoiced_to_order_statuses') );
 			add_filter( 'woocommerce_screen_ids', array( $this, 'add_wc_screen_id') );
-
-		}
-
-		/**
-		* Let's make a new status for invoiced orders
-		*/
-		public function register_invoice_order_statuses() {
-
-		    register_post_status( 'wc-invoiced', array(
-		        'label'                     => __( 'Invoiced', 'woocommerce-aggregate-orders' ),
-		        'public'                    => false,
-		        'exclude_from_search'       => false,
-		        'show_in_admin_all_list'    => true,
-		        'show_in_admin_status_list' => true,
-		        'label_count'               => _n_noop( __( 'Invoiced', 'woocommerce-aggregate-orders' )
-		        	. ' <span class="count">(%s)</span>', __( 'Invoiced', 'woocommerce-aggregate-orders' )
-		        	. ' <span class="count">(%s)</span>' )
-		    ) );
-
-		}
-
-		/**
-		* @param array $order_statuses
-		* We want WC to be aware of our "invoiced" status
-		*/
-		function add_invoiced_to_order_statuses( $order_statuses ) {
-
-			$new_order_statuses = array();
-
-			foreach ( $order_statuses as $key => $status ) {
-				$new_order_statuses[$key] = $status;
-				if ( 'wc-pending' === $key ) $new_order_statuses['wc-invoiced'] = 'Invoiced';
-			}
-
-			return $new_order_statuses;
 
 		}
 
