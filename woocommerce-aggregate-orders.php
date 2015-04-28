@@ -2,7 +2,7 @@
 /*----------------------------------------------------------------------------------------------------------------------
 Plugin Name: WooCommerce Aggregate Order Invoicing
 Description: Generate single invoices for groups of orders. Creates a new 'invoiced' order type.
-Version: 1.6.0
+Version: 1.6.5
 Author: New Order Studios
 Author URI: http://neworderstudios.com
 ----------------------------------------------------------------------------------------------------------------------*/
@@ -54,7 +54,8 @@ if ( is_admin() && !class_exists( 'wcAggregateOrders' ) ) {
 					});
 
 					<?php if ( !$aggregate ) { ?>
-						$('#woo_pdf_metabox .inside').html('<?php _e( 'Invoices cannot be generated for unmerged orders.', 'woocommerce-aggregate-orders' ) ?>');
+						//$('#woo_pdf_metabox .inside').html('<?php _e( 'Invoices cannot be generated for unmerged orders.', 'woocommerce-aggregate-orders' ) ?>');
+						$('#woo_pdf_metabox .inside a:eq(1)').hide();
 					<?php } ?>
 				});
 				</script>
